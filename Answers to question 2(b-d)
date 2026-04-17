@@ -1,1 +1,14 @@
+-- (b). Display name, date_of_employment, and department of the 15th employee
+SELECT emp_name, date_of_employment, department
+FROM employee
+LIMIT 1 OFFSET 14;
 
+-- (c). Total salary paid to all employees in one month
+SELECT SUM(salary) AS total_monthly_salary
+FROM employee;
+
+-- (d). Use of AND logical operator on employee table
+SELECT *
+FROM employee
+WHERE department = "IT"
+AND salary > 80000;
