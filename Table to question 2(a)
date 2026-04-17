@@ -1,0 +1,34 @@
+CREATE TABLE employee (
+    emp_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    emp_name VARCHAR(100),
+    department VARCHAR(100),
+    job_group VARCHAR(50),
+    salary DECIMAL(10,2),
+    qualification VARCHAR(100),
+    date_of_birth DATE,
+    date_of_employment DATE
+);
+
+INSERT INTO employee (emp_name, department, job_group, salary, qualification, date_of_birth, date_of_employment)
+VALUES ("John Kamau", "IT", "A", 80000, "Degree", "1995-04-10", "2020-01-15");
+
+INSERT INTO employee VALUES (NULL, "Mary Wanjiku", "HR", "B", 60000, "Diploma", "1993-06-12", "2019-03-20");
+INSERT INTO employee VALUES (NULL, "Peter Mwangi", "Finance", "A", 90000, "Degree", "1990-02-11", "2018-07-10");
+INSERT INTO employee VALUES (NULL, "Grace Akinyi", "IT", "C", 50000, "Certificate", "1998-09-01", "2021-05-05");
+INSERT INTO employee VALUES (NULL, "James Otieno", "Admin", "B", 55000, "Diploma", "1992-12-22", "2017-11-01");
+INSERT INTO employee VALUES (NULL, "Faith Njeri", "IT", "A", 85000, "Degree", "1994-03-30", "2020-06-18");
+INSERT INTO employee VALUES (NULL, "Brian Kiptoo", "Finance", "B", 70000, "Diploma", "1991-08-14", "2016-09-09");
+INSERT INTO employee VALUES (NULL, "Ann Wambui", "HR", "C", 45000, "Certificate", "1997-01-25", "2022-02-14");
+INSERT INTO employee VALUES (NULL, "David Ouma", "IT", "A", 95000, "Degree", "1989-05-19", "2015-04-12");
+INSERT INTO employee VALUES (NULL, "Esther Njoki", "Admin", "B", 52000, "Diploma", "1996-07-07", "2019-08-23");
+
+INSERT INTO employee VALUES (NULL, "Samuel Kiprotich", "Finance", "A", 88000, "Degree", "1993-11-11", "2018-10-30");
+INSERT INTO employee VALUES (NULL, "Lucy Chebet", "IT", "C", 48000, "Certificate", "1999-04-04", "2023-01-10");
+INSERT INTO employee VALUES (NULL, "Kevin Mutua", "HR", "B", 61000, "Diploma", "1992-06-16", "2017-06-25");
+INSERT INTO employee VALUES (NULL, "Diana Auma", "Finance", "A", 92000, "Degree", "1991-09-09", "2016-03-18");
+INSERT INTO employee VALUES (NULL, "Victor Maina", "Admin", "B", 53000, "Diploma", "1994-12-12", "2020-12-01");
+INSERT INTO employee VALUES (NULL, "Susan Chepngeno", "IT", "A", 87000, "Degree", "1995-02-28", "2019-09-09");
+INSERT INTO employee VALUES (NULL, "Paul Kiplagat", "Finance", "C", 47000, "Certificate", "1998-08-08", "2022-07-07");
+INSERT INTO employee VALUES (NULL, "Naomi Wairimu", "HR", "A", 80000, "Degree", "1993-03-03", "2018-05-05");
+INSERT INTO employee VALUES (NULL, "George Njoroge", "IT", "B", 65000, "Diploma", "1990-10-10", "2016-11-11");
+INSERT INTO employee VALUES (NULL, "Caroline Atieno", "Admin", "C", 49000, "Certificate", "1997-07-17", "2021-10-20");
