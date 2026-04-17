@@ -1,1 +1,131 @@
+--( i). List all movie titles
+SELECT title
+FROM movies;
 
+-- (ii). Title and year (descending order)
+SELECT title, year_released
+FROM movies
+ORDER BY year_released DESC;
+
+-- (iii). All directors ordered by country (ASC)
+SELECT *
+FROM directors
+ORDER BY country ASC;
+
+-- (iv). Order by country then last name (ASC)
+SELECT *
+FROM directors
+ORDER BY country ASC, last_name ASC;
+
+-- (v). Insert Rob Reiner into directors
+INSERT INTO directors (first_name, last_name, country)
+VALUES ("Rob", "Reiner", "USA");
+
+-- (vi). Find Rob Reiner (WHERE)
+SELECT director_id, last_name
+FROM directors
+WHERE first_name = "Rob" AND last_name = "Reiner";
+
+-- (vii). Insert The Princess Bride
+INSERT INTO movies (title, year_released, director_id)
+VALUES ("The Princess Bride", 1987, 11);
+
+-- (viii). INNER JOIN (movie title, year, director last name)
+SELECT m.title, m.year_released, d.last_name
+FROM movies m
+INNER JOIN directors d
+ON m.director_id = d.director_id;
+
+-- (ix). Movies with full director name (ordered by last name)
+SELECT m.title, m.year_released, d.first_name, d.last_name
+FROM movies m
+INNER JOIN directors d
+ON m.director_id = d.director_id
+ORDER BY d.last_name ASC;
+
+-- (x). Director of The Incredibles (WHERE)
+SELECT d.first_name, d.last_name
+FROM directors d, movies m
+WHERE m.director_id = d.director_id
+AND m.title = "The Incredibles";
+
+-- (xi). Director of Roma (JOIN)
+SELECT d.last_name, d.country
+FROM movies m
+JOIN directors d
+ON m.director_id = d.director_id
+WHERE m.title = "Roma";
+
+-- (xii). Delete a movie + check tables
+DELETE FROM movies
+WHERE title = "Selma";
+SELECT * FROM movies;
+SELECT * FROM directors;
+
+-- (xiii). Attempt to delete director (will fail due to FK)
+DELETE FROM directors
+WHERE director_id = 1;
+
+-- (xiv). SQL Aliases examples
+SELECT m.title AS Movie_Title,
+       d.last_name AS Director
+FROM movies m
+JOIN directors d
+ON m.director_id = d.director_id;
+
+SELECT d.first_name AS First,
+       d.last_name AS Last
+FROM directors d;
+
+SELECT m.title AS Film, m.year_released AS Year
+FROM movies m
+ORDER BY Year DESC;
+
+--( xv). Movies directed by Peter Jackson
+SELECT m.title
+FROM movies m
+JOIN directors d
+ON m.director_id = d.director_id
+WHERE d.last_name = "Jackson";
+
+-- (xvi). Add earnings column
+ALTER TABLE movies
+ADD earnings INTEGER;
+
+-- (xvii). Update earnings values
+UPDATE movies SET earnings = 100000000 WHERE title = "Toy Story";
+UPDATE movies SET earnings = 120000000 WHERE title = "The Incredibles";
+UPDATE movies SET earnings = 30000000 WHERE title = "Money Monster";
+UPDATE movies SET earnings = 90000000 WHERE title = "A Bug's Life";
+UPDATE movies SET earnings = 60000000 WHERE title = "Crouching Tiger, Hidden Dragon";
+UPDATE movies SET earnings = 80000000 WHERE title = "Harry Potter and the Prisoner of Azkaban";
+UPDATE movies SET earnings = 15000000 WHERE title = "Little Man Tate";
+UPDATE movies SET earnings = 40000000 WHERE title = "Roma";
+UPDATE movies SET earnings = 10000000 WHERE title = "The Perfect Candidate";
+UPDATE movies SET earnings = 150000000 WHERE title = "The Shape of Water";
+UPDATE movies SET earnings = 110000000 WHERE title = "The Lord of the Rings: The Return of the King";
+UPDATE movies SET earnings = 70000000 WHERE title = "A Wrinke in Time";
+UPDATE movies SET earnings = 400000000 WHERE title = "Wonder Woman";
+UPDATE movies SET earnings = 200000000 WHERE title = "Ratatouille";
+UPDATE movies SET earnings = 25000000 WHERE title = "Mary Shelley";
+UPDATE movies SET earnings = 60000000 WHERE title = "Selma";
+
+-- (xviii). Rank movies by earnings
+SELECT title, earnings,
+       RANK() OVER (ORDER BY earnings DESC) AS ranking
+FROM movies;
+
+-- (xix). Filter earnings (above / below)
+SELECT title, earnings
+FROM movies
+WHERE earnings > 100000000;
+
+SELECT title, earnings
+FROM movies
+WHERE earnings < 50000000;
+
+--- (xx). Logical operators (AND, OR, NOT)
+SELECT title, earnings
+FROM movies
+WHERE (earnings > 50000000 AND earnings < 200000000)
+   OR NOT (title = "Selma");
